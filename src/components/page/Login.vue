@@ -1,56 +1,61 @@
 <template>
-    <div class="login-wrap">
-        <div class="ms-login">
-            <div class="ms-title">Production_Mes</div>
-            <el-form :model="param" :rules="rules" ref="login" label-width="0px" class="ms-content">
-                <el-form-item prop="login_name">
-                    <el-input v-model="param.login_name" placeholder="login_name">
-                        <el-button slot="prepend" icon="el-icon-lx-people"></el-button>
-                    </el-input>
-                </el-form-item>
-                <el-form-item prop="password">
-                    <el-input
-                        type="password"
-                        placeholder="password"
-                        v-model="param.password"
-                        @keyup.enter.native="submitForm()"
-                    >
-                        <el-button slot="prepend" icon="el-icon-lx-lock"></el-button>
-                    </el-input>
-                </el-form-item>
-                <div class="login-btn">
-                    <el-button type="primary" @click="submitForm()">登录</el-button>
-                </div>
-                <p class="login-tips">Tips : .......</p>
-            </el-form>
+  <div class="login-wrap">
+    <div class="ms-login">
+      <div class="ms-title">MES_Production</div>
+      <el-form :model="param"
+               :rules="rules"
+               ref="login"
+               label-width="0px"
+               class="ms-content">
+        <el-form-item prop="login_name">
+          <el-input v-model="param.login_name"
+                    placeholder="login_name">
+            <el-button slot="prepend"
+                       icon="el-icon-lx-people"></el-button>
+          </el-input>
+        </el-form-item>
+        <el-form-item prop="password">
+          <el-input type="password"
+                    placeholder="password"
+                    v-model="param.password"
+                    @keyup.enter.native="submitForm()">
+            <el-button slot="prepend"
+                       icon="el-icon-lx-lock"></el-button>
+          </el-input>
+        </el-form-item>
+        <div class="login-btn">
+          <el-button type="primary"
+                     @click="submitForm()">登录</el-button>
         </div>
+        <p class="login-tips">Tips : .......</p>
+      </el-form>
     </div>
+  </div>
 </template>
 
 <script>
-import request from "../../utils/request";
+import request from '../../utils/request';
 
 export default {
-    data: function() {
+    data: function () {
         return {
             param: {
                 login_name: 'admin',
-                password: 'admin',
+                password: 'admin'
             },
             rules: {
                 login_name: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
-                password: [{ required: true, message: '请输入密码', trigger: 'blur' }],
-            },
+                password: [{ required: true, message: '请输入密码', trigger: 'blur' }]
+            }
         };
     },
     methods: {
         submitForm() {
-            this.$refs.login.validate(valid => {
+            this.$refs.login.validate((valid) => {
                 if (valid) {
-                    this.$axios.post('/api/sysUser/login',this.param).then( res => {
+                    this.$axios.post('/api/sysUser/login', this.param).then((res) => {
                         console.log(res);
-                        if(res.data.code==200)
-                        {
+                        if (res.data.code == 200) {
                             this.$message.success('登录成功');
                             localStorage.setItem('ms_username', this.param.login_name);
                             localStorage.setItem('userInfo', JSON.stringify(res.data.data));
@@ -58,18 +63,16 @@ export default {
                             // localStorage.setItem('login_ip', res.login_ip);
                             // localStorage.setItem('photo', res.photo);
                             this.$router.push('/');
-                        }
-                        else
-                            this.$message.error('登陆失败');
-                    })
+                        } else this.$message.error('登陆失败');
+                    });
                 } else {
                     this.$message.error('请输入账号和密码');
                     console.log('error submit!!');
                     return false;
                 }
             });
-        },
-    },
+        }
+    }
 };
 </script>
 
