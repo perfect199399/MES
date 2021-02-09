@@ -48,11 +48,11 @@
           <el-dropdown-menu slot="dropdown">
             <a href="https://github.com/perfect199399/MES"
                target="_blank">
-              <el-dropdown-item>前端仓库</el-dropdown-item>
+              <el-dropdown-item>前端仓库地址</el-dropdown-item>
             </a>
             <a href="https://github.com/perfect199399/MES_Production"
                target="_blank">
-              <el-dropdown-item>后端仓库</el-dropdown-item>
+              <el-dropdown-item>后端仓库地址</el-dropdown-item>
             </a>
             <el-dropdown-item divided
                               command="loginout">退出登录</el-dropdown-item>
