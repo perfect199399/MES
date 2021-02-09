@@ -1,0 +1,32 @@
+{
+  "name": "vue-manage-system",
+  "version": "8.17.0",
+  "private": true,
+  "scripts": {
+    "dev": "npm run serve",
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "start": "node index.js",
+    "server": "nodemon index.js --ignore client"
+  },
+  "dependencies": {
+    "axios": "^0.18.1",
+    "babel-polyfill": "^6.26.0",
+    "element-ui": "^2.11.0",
+    "file-saver": "^2.0.2",
+    "mavon-editor": "^2.6.17",
+    "vue": "^2.6.10",
+    "vue-cropperjs": "^3.0.0",
+    "vue-i18n": "^8.10.0",
+    "vue-quill-editor": "^3.0.6",
+    "vue-router": "^3.0.3",
+    "vue-schart": "^2.0.0",
+    "vuedraggable": "^2.17.0",
+    "xlsx": "^0.16.8"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.9.0",
+    "@vue/cli-service": "^3.9.0",
+    "vue-template-compiler": "^2.6.10"
+  }
+}
