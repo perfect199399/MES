@@ -1,19 +1,31 @@
+<!--
+ * @,@Description: ,: 
+ * @,@Version: ,: 1.0.0
+ * @,@Author: ,: perfect
+ * @,@Date: ,: 2021-02-09 09:26:03
+ * @,@LastEditors: ,: perfect
+ * @,@LastEditTime: ,: 2021-02-18 11:24:26
+ -->
 <template>
-    <div class="wrapper">
-        <v-head></v-head>
-        <v-sidebar></v-sidebar>
-        <div class="content-box" :class="{'content-collapse':collapse}">
-            <v-tags></v-tags>
-            <div class="content">
-                <transition name="move" mode="out-in">
-                    <keep-alive :include="tagsList">
-                        <router-view></router-view>
-                    </keep-alive>
-                </transition>
-                <el-backtop target=".content"></el-backtop>
-            </div>
-        </div>
+  <div class="wrapper">
+    <v-head></v-head>
+    <v-sidebar></v-sidebar>
+    <div class="content-box"
+         :class="{'content-collapse':collapse}">
+      <v-tags></v-tags>
+      <div class="content">
+        <transition name="move"
+                    mode="out-in">
+          <keep-alive :include="tagsList">
+            <router-view></router-view>
+          </keep-alive>
+        </transition>
+        <!-- 返回页面顶部操作 -->
+        <!-- target触发滚动的对象 -->
+        <el-backtop target=".content"></el-backtop>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
@@ -34,12 +46,12 @@ export default {
         vTags
     },
     created() {
-        bus.$on('collapse-content', msg => {
+        bus.$on('collapse-content', (msg) => {
             this.collapse = msg;
         });
 
         // 只有在标签页列表里的页面才使用keep-alive，即关闭标签之后就不保存到内存中了。
-        bus.$on('tags', msg => {
+        bus.$on('tags', (msg) => {
             let arr = [];
             for (let i = 0, len = msg.length; i < len; i++) {
                 msg[i].name && arr.push(msg[i].name);

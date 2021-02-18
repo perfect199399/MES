@@ -1,3 +1,11 @@
+/*
+ * @,@Description: ,: 
+ * @,@Version: ,: 1.0.0
+ * @,@Author: ,: perfect
+ * @,@Date: ,: 2021-02-09 09:26:03
+ * @,@LastEditors: ,: perfect
+ * @,@LastEditTime: ,: 2021-02-18 09:13:49
+ */
 import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
