@@ -72,7 +72,7 @@ export default {
             name: 'linxin',
             message: 2,
             name: 'dashboard',
-            photo: '../../assets/img/img2.jpg'
+            photo: require('../../assets/img/img2.jpg')
         };
     },
     computed: {
@@ -85,9 +85,9 @@ export default {
         }
     },
     created() {
-        var obj = JSON.parse(localStorage.getItem('userInfo'));
-        this.photo = require('../../assets/img/' + obj.photo);
-        this.name = obj.name;
+        // var obj = JSON.parse(localStorage.getItem('userInfo'));
+        // // this.photo = require('../../assets/img/' + obj.photo);
+        // // this.name = obj.name;
     },
     methods: {
         // 用户名下拉菜单选择事件
